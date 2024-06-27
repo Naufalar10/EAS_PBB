@@ -4,17 +4,23 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.selection.SelectionContainer
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -56,6 +62,8 @@ fun EasApp(modifier: Modifier = Modifier) {
     var shouldFirstPage by rememberSaveable { mutableStateOf(true) }
     var shouldLogIn by rememberSaveable { mutableStateOf(true) }
     var shouldHome by rememberSaveable { mutableStateOf(true) }
+    var shouldreward by rememberSaveable {mutableStateOf(true) }
+    var shouldbenefit by rememberSaveable { mutableStateOf(true) }
 
     Surface(modifier) {
         if (shouldFirstPage) {
@@ -67,9 +75,15 @@ fun EasApp(modifier: Modifier = Modifier) {
         } else if (shouldLogIn) {
             SignUpScreen(onContinueClicked = { shouldLogIn = false })
         }
-        else {
+        else if (shouldHome){
             LoginScreen(onContinueClicked = { shouldHome = false })
         }
+        else if (shouldreward) {
+            RewardScreen(onContinueClicked = { shouldreward = false})
+        }
+        else {
+            RewardBenefit(onContinueClicked = { shouldbenefit = false})
+    }
     }
 
 }
@@ -241,4 +255,260 @@ fun LoginScreen(onContinueClicked: () -> Unit,
 
     }
 }
+
+@Composable
+fun RewardScreen(onContinueClicked: () -> Unit,
+                modifier: Modifier = Modifier) {
+
+    Image(
+        painter = painterResource(id = R.drawable.splash_screen_3),
+        contentDescription = "login image",
+        contentScale = ContentScale.FillBounds,
+        modifier = Modifier.fillMaxSize()
+    )
+    Column(
+        modifier = modifier.fillMaxSize(),
+//        verticalArrangement = Arrangement.Center,
+        //horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(modifier = Modifier.height(80.dp))
+        Spacer(modifier = Modifier.height(60.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+        ) {
+
+            Column(modifier = Modifier) {
+                Spacer(modifier = Modifier.height(80.dp))
+                Divider(
+                    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                        .fillMaxWidth()
+                )
+                Row(
+                    modifier = Modifier
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        //horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(text = "Membership Status", fontSize = 20.sp, fontWeight = FontWeight.Normal)
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "Green Level", fontSize = 32.sp, fontWeight = FontWeight.Bold, color = Color(16, 124, 65))
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(text = "300 Stars to Gold Tier", fontSize = 20.sp, fontWeight = FontWeight.Normal)
+                        Text(text = "Member Since 26 June 2024", fontSize = 20.sp, fontWeight = FontWeight.Normal)
+                    }
+
+                }
+                Divider(
+                    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 15.dp)
+                )
+
+
+            }
+            Column(modifier = Modifier) {
+                Row(
+                    modifier = Modifier
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        //horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+
+                        Text(text = "More about your reward benefits", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+
+                    }
+                    Button(
+                        onClick = onContinueClicked,
+                        colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+                    ) {
+                        Text(">", fontSize = 20.sp,fontWeight = FontWeight.Bold, color = Color.Black)
+                    }
+
+
+                }
+                Divider(
+                    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 15.dp)
+                )
+
+            }
+            Column(modifier = Modifier) {
+                Row(
+                    modifier = Modifier
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        //horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+
+                        Text(
+                            text = "Reward and Benefits",
+                            fontSize = 30.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun RewardBenefit(onContinueClicked: () -> Unit,
+                 modifier: Modifier = Modifier) {
+
+    Image(
+        painter = painterResource(id = R.drawable.splash_screen_4),
+        contentDescription = "login image",
+        contentScale = ContentScale.FillBounds,
+        modifier = Modifier.fillMaxSize()
+    )
+    Column(
+        modifier = modifier.fillMaxSize(),
+//        verticalArrangement = Arrangement.Center,
+        //horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        //Spacer(modifier = Modifier.height(10.dp))
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+        ) {
+
+            Column(modifier = Modifier) {
+                //Spacer(modifier = Modifier.height(10.dp))
+                //Divider(
+                //    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                    //.fillMaxWidth()
+                //)
+                Row(
+                    modifier = Modifier
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        //horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Rewards Benefit",
+                            fontSize = 32.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Green Level",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color(16, 124, 65)
+                        )
+                    }
+
+
+                }
+                Divider(
+                    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 15.dp)
+                )
+            }
+            Column(modifier = Modifier) {
+                //Spacer(modifier = Modifier.height(10.dp))
+                //Divider(
+                //    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                //.fillMaxWidth()
+                //)
+                Row(
+                    modifier = Modifier
+                ) {
+                    Column(
+                        modifier = Modifier.padding(10.dp),
+                        //horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = "Collect 1 star for every Rp6.000,- spent using your registered Starbucks Card balance as a means of payment",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Collect 1 star for every Rp12.000,- spent using any other means of payment linked to your Starbucks Reward account",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Normal,
+                        )
+
+                        Divider(
+                            color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 15.dp)
+                        )
+
+
+                        Text(
+                            text = "Rewards :",
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Bold,
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "- 30 Stars = Free add-on(Espresso Shot/ Syrup / Sauce)",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Normal,
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "- 60 Stars = Free Tall Brewed Tea / Americano ",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Normal,
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "- 120 Stars = Free Any Food / Handcrafted Beverage (Tall Size) ",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Normal,
+                        )
+
+
+                    }
+
+
+                }
+                Divider(
+                    color = Color(196, 196, 196), thickness = 1.dp, modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 10.dp)
+                )
+                Column(
+                    modifier = Modifier.padding(10.dp),
+                    //horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Terms & Conditions Appy.",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = " - Star & Rewards may appear up to 1 x 24 hours",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = " - Other T&C apply",
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                    )
+                }
+            }
+        }
+    }
+}
+
 
